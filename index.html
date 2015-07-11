@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    
+    </script>
+    <script type="text/javascript">
+      /*function initialize() { <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCMQUz1Xx-ikSAuu8wKpwrbmsqIXEkoZ6c&sensor=FALSE">
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+
+      }*/
+      /*function initialize() {
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+        var mapOptions = {
+          zoom: 4,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title:"Hello World!"
+        });
+
+        map.addEventListener('click', createMarker);
+      }
+
+      function createMarker(){
+        var marker = new google.maps.LatLng
+      }*/
+
+      var map;
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(-25.363882,131.044922);
+        var mapOptions = {
+          zoom: 4,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+        google.maps.event.addListener(map, 'click', function(event) {
+          placeMarker(event.latLng);
+        });
+      }
+
+      function placeMarker(location) {
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map
+        });
+
+        console.log(location.lat());
+        console.log(location.lng());
+        map.setCenter(location);
+      }      
+
+    </script>
+  </head>
+  <body> <!-- onload="initialize()" -->
+    Hello Snappy!!
+    <!-- <div id="map_canvas" style="width:100%; height:100%"></div> -->
+  </body>
+</html>
